@@ -1,0 +1,918 @@
+[
+    {
+        "inputs": [
+            {
+                "internalType": "contract IUniFactory",
+                "name": "factory",
+                "type": "address"
+            },
+            {
+                "internalType": "contract IUniswapV2Router02",
+                "name": "uniswaprouter",
+                "type": "address"
+            }
+        ],
+        "stateMutability": "nonpayable",
+        "type": "constructor"
+    },
+    {
+        "anonymous": false,
+        "inputs": [
+            {
+                "indexed": true,
+                "internalType": "address",
+                "name": "_address",
+                "type": "address"
+            }
+        ],
+        "name": "fastBurnApproved",
+        "type": "event"
+    },
+    {
+        "anonymous": false,
+        "inputs": [
+            {
+                "indexed": true,
+                "internalType": "uint256",
+                "name": "newTime",
+                "type": "uint256"
+            },
+            {
+                "indexed": true,
+                "internalType": "uint256",
+                "name": "locknumber",
+                "type": "uint256"
+            }
+        ],
+        "name": "lockExtended",
+        "type": "event"
+    },
+    {
+        "anonymous": false,
+        "inputs": [
+            {
+                "indexed": true,
+                "internalType": "address",
+                "name": "lptoken",
+                "type": "address"
+            },
+            {
+                "indexed": true,
+                "internalType": "uint256",
+                "name": "liquidity",
+                "type": "uint256"
+            }
+        ],
+        "name": "lpFastBurnt",
+        "type": "event"
+    },
+    {
+        "anonymous": false,
+        "inputs": [
+            {
+                "indexed": true,
+                "internalType": "address",
+                "name": "tokenaddress",
+                "type": "address"
+            },
+            {
+                "indexed": false,
+                "internalType": "uint256",
+                "name": "amount",
+                "type": "uint256"
+            },
+            {
+                "indexed": false,
+                "internalType": "uint256",
+                "name": "unlocktime",
+                "type": "uint256"
+            },
+            {
+                "indexed": true,
+                "internalType": "address",
+                "name": "owner",
+                "type": "address"
+            },
+            {
+                "indexed": true,
+                "internalType": "uint256",
+                "name": "locknumber",
+                "type": "uint256"
+            }
+        ],
+        "name": "lpLocked",
+        "type": "event"
+    },
+    {
+        "anonymous": false,
+        "inputs": [
+            {
+                "indexed": true,
+                "internalType": "address",
+                "name": "tokenaddress",
+                "type": "address"
+            },
+            {
+                "indexed": false,
+                "internalType": "uint256",
+                "name": "amount",
+                "type": "uint256"
+            },
+            {
+                "indexed": true,
+                "internalType": "address",
+                "name": "owner",
+                "type": "address"
+            },
+            {
+                "indexed": true,
+                "internalType": "uint256",
+                "name": "locknumber",
+                "type": "uint256"
+            }
+        ],
+        "name": "lpWithdrawn",
+        "type": "event"
+    },
+    {
+        "anonymous": false,
+        "inputs": [
+            {
+                "indexed": true,
+                "internalType": "uint256",
+                "name": "newLPamount",
+                "type": "uint256"
+            },
+            {
+                "indexed": true,
+                "internalType": "uint256",
+                "name": "locknumber",
+                "type": "uint256"
+            }
+        ],
+        "name": "newLPadded",
+        "type": "event"
+    },
+    {
+        "anonymous": false,
+        "inputs": [
+            {
+                "indexed": true,
+                "internalType": "address",
+                "name": "_address",
+                "type": "address"
+            },
+            {
+                "indexed": true,
+                "internalType": "uint256",
+                "name": "approvedTime",
+                "type": "uint256"
+            }
+        ],
+        "name": "newTimeApproved",
+        "type": "event"
+    },
+    {
+        "anonymous": false,
+        "inputs": [
+            {
+                "indexed": true,
+                "internalType": "address",
+                "name": "newOwner",
+                "type": "address"
+            },
+            {
+                "indexed": true,
+                "internalType": "uint256",
+                "name": "locknumber",
+                "type": "uint256"
+            }
+        ],
+        "name": "ownerUpdated",
+        "type": "event"
+    },
+    {
+        "stateMutability": "payable",
+        "type": "fallback"
+    },
+    {
+        "inputs": [],
+        "name": "ETH",
+        "outputs": [
+            {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "uint256",
+                "name": "lockNumber",
+                "type": "uint256"
+            },
+            {
+                "internalType": "uint256",
+                "name": "amount",
+                "type": "uint256"
+            }
+        ],
+        "name": "addLP",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [],
+        "name": "approve15DaysLock",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [],
+        "name": "approve180DaysLock",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [],
+        "name": "approve1DayLock",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [],
+        "name": "approve30DaysLock",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [],
+        "name": "approve365DaysLock",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [],
+        "name": "approve7DaysLock",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [],
+        "name": "approve90DaysLock",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "uint256",
+                "name": "approveTime",
+                "type": "uint256"
+            }
+        ],
+        "name": "approveCustomTime",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [],
+        "name": "approveFastBurnLP",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "address",
+                "name": "",
+                "type": "address"
+            }
+        ],
+        "name": "approvedFastBurn",
+        "outputs": [
+            {
+                "internalType": "bool",
+                "name": "",
+                "type": "bool"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "address",
+                "name": "",
+                "type": "address"
+            }
+        ],
+        "name": "approvedTimeFastLock",
+        "outputs": [
+            {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "uint256",
+                "name": "newETH",
+                "type": "uint256"
+            }
+        ],
+        "name": "change",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "address payable",
+                "name": "newaddress",
+                "type": "address"
+            }
+        ],
+        "name": "changeaddress",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "uint256",
+                "name": "locknumber",
+                "type": "uint256"
+            },
+            {
+                "internalType": "uint256",
+                "name": "newunlocktime",
+                "type": "uint256"
+            }
+        ],
+        "name": "extendLock",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "address",
+                "name": "tokenaddress",
+                "type": "address"
+            },
+            {
+                "internalType": "uint256",
+                "name": "amountTokenDesired",
+                "type": "uint256"
+            },
+            {
+                "internalType": "uint256",
+                "name": "amountTokenMin",
+                "type": "uint256"
+            },
+            {
+                "internalType": "uint256",
+                "name": "amountETHMin",
+                "type": "uint256"
+            }
+        ],
+        "name": "fastBurnLPWithETH",
+        "outputs": [],
+        "stateMutability": "payable",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "address",
+                "name": "tokenaddress1",
+                "type": "address"
+            },
+            {
+                "internalType": "address",
+                "name": "tokenaddress2",
+                "type": "address"
+            },
+            {
+                "internalType": "uint256",
+                "name": "amount1Desired",
+                "type": "uint256"
+            },
+            {
+                "internalType": "uint256",
+                "name": "amount2Desired",
+                "type": "uint256"
+            },
+            {
+                "internalType": "uint256",
+                "name": "amount1Min",
+                "type": "uint256"
+            },
+            {
+                "internalType": "uint256",
+                "name": "amount2Min",
+                "type": "uint256"
+            }
+        ],
+        "name": "fastBurnLPWithTokens",
+        "outputs": [],
+        "stateMutability": "payable",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "address",
+                "name": "tokenaddress",
+                "type": "address"
+            },
+            {
+                "internalType": "uint256",
+                "name": "amountTokenDesired",
+                "type": "uint256"
+            },
+            {
+                "internalType": "uint256",
+                "name": "amountTokenMin",
+                "type": "uint256"
+            },
+            {
+                "internalType": "uint256",
+                "name": "amountETHMin",
+                "type": "uint256"
+            },
+            {
+                "internalType": "address",
+                "name": "_owner",
+                "type": "address"
+            }
+        ],
+        "name": "fastLockLPWithETH",
+        "outputs": [],
+        "stateMutability": "payable",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "address",
+                "name": "tokenaddress1",
+                "type": "address"
+            },
+            {
+                "internalType": "address",
+                "name": "tokenaddress2",
+                "type": "address"
+            },
+            {
+                "internalType": "uint256",
+                "name": "amount1Desired",
+                "type": "uint256"
+            },
+            {
+                "internalType": "uint256",
+                "name": "amount2Desired",
+                "type": "uint256"
+            },
+            {
+                "internalType": "uint256",
+                "name": "amount1Min",
+                "type": "uint256"
+            },
+            {
+                "internalType": "uint256",
+                "name": "amount2Min",
+                "type": "uint256"
+            },
+            {
+                "internalType": "address",
+                "name": "_owner",
+                "type": "address"
+            }
+        ],
+        "name": "fastLockLPWithTokens",
+        "outputs": [],
+        "stateMutability": "payable",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "address",
+                "name": "addr",
+                "type": "address"
+            }
+        ],
+        "name": "getAddressApprovedFastBurn",
+        "outputs": [
+            {
+                "internalType": "bool",
+                "name": "",
+                "type": "bool"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "address",
+                "name": "addr",
+                "type": "address"
+            }
+        ],
+        "name": "getAddressApprovedTimeFastLock",
+        "outputs": [
+            {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "uint256",
+                "name": "lockNumber",
+                "type": "uint256"
+            }
+        ],
+        "name": "getLockInfo",
+        "outputs": [
+            {
+                "internalType": "address",
+                "name": "lockowner",
+                "type": "address"
+            },
+            {
+                "internalType": "address",
+                "name": "lpaddress",
+                "type": "address"
+            },
+            {
+                "internalType": "uint256",
+                "name": "unlockdate",
+                "type": "uint256"
+            },
+            {
+                "internalType": "uint256",
+                "name": "lockamount",
+                "type": "uint256"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "address",
+                "name": "addr",
+                "type": "address"
+            }
+        ],
+        "name": "getLocksByOwnerAddress",
+        "outputs": [
+            {
+                "internalType": "uint256[]",
+                "name": "",
+                "type": "uint256[]"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "address",
+                "name": "addr",
+                "type": "address"
+            }
+        ],
+        "name": "getLocksByTokenAddress",
+        "outputs": [
+            {
+                "internalType": "uint256[]",
+                "name": "",
+                "type": "uint256[]"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [],
+        "name": "getLocksCount",
+        "outputs": [
+            {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "address",
+                "name": "",
+                "type": "address"
+            }
+        ],
+        "name": "isExcludedFromFee",
+        "outputs": [
+            {
+                "internalType": "bool",
+                "name": "",
+                "type": "bool"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "address",
+                "name": "token",
+                "type": "address"
+            },
+            {
+                "internalType": "uint256",
+                "name": "amount",
+                "type": "uint256"
+            },
+            {
+                "internalType": "uint256",
+                "name": "locktime",
+                "type": "uint256"
+            },
+            {
+                "internalType": "address",
+                "name": "_owner",
+                "type": "address"
+            }
+        ],
+        "name": "lockTokens",
+        "outputs": [],
+        "stateMutability": "payable",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "name": "locks",
+        "outputs": [
+            {
+                "internalType": "address",
+                "name": "lockowner",
+                "type": "address"
+            },
+            {
+                "internalType": "address",
+                "name": "lpaddress",
+                "type": "address"
+            },
+            {
+                "internalType": "uint256",
+                "name": "unlockdate",
+                "type": "uint256"
+            },
+            {
+                "internalType": "uint256",
+                "name": "lockamount",
+                "type": "uint256"
+            },
+            {
+                "internalType": "uint256",
+                "name": "lockid",
+                "type": "uint256"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "address",
+                "name": "addr",
+                "type": "address"
+            },
+            {
+                "internalType": "bool",
+                "name": "value",
+                "type": "bool"
+            }
+        ],
+        "name": "manageIsExcludedFromFee",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [],
+        "name": "newContract",
+        "outputs": [
+            {
+                "internalType": "address",
+                "name": "",
+                "type": "address"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "address",
+                "name": "",
+                "type": "address"
+            },
+            {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "name": "ownerLocks",
+        "outputs": [
+            {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [],
+        "name": "pause",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [],
+        "name": "paused",
+        "outputs": [
+            {
+                "internalType": "bool",
+                "name": "",
+                "type": "bool"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "address",
+                "name": "",
+                "type": "address"
+            },
+            {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "name": "tokenLocks",
+        "outputs": [
+            {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "address",
+                "name": "newOwner",
+                "type": "address"
+            }
+        ],
+        "name": "transferOwnership",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [],
+        "name": "uniswapFactory",
+        "outputs": [
+            {
+                "internalType": "contract IUniFactory",
+                "name": "",
+                "type": "address"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [],
+        "name": "uniswapRouter",
+        "outputs": [
+            {
+                "internalType": "contract IUniswapV2Router02",
+                "name": "",
+                "type": "address"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [],
+        "name": "unpause",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "uint256",
+                "name": "locknumber",
+                "type": "uint256"
+            },
+            {
+                "internalType": "address",
+                "name": "newowner",
+                "type": "address"
+            }
+        ],
+        "name": "updateOwner",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "uint256",
+                "name": "lockNumber",
+                "type": "uint256"
+            }
+        ],
+        "name": "withdrawLP",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [],
+        "name": "withdrawStuckETH",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "stateMutability": "payable",
+        "type": "receive"
+    }
+]

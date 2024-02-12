@@ -1,0 +1,331 @@
+[
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "_router",
+				"type": "address"
+			},
+			{
+				"internalType": "address",
+				"name": "_factory",
+				"type": "address"
+			},
+			{
+				"internalType": "address",
+				"name": "_swapRouter",
+				"type": "address"
+			}
+		],
+		"stateMutability": "nonpayable",
+		"type": "constructor"
+	},
+	{
+		"stateMutability": "payable",
+		"type": "fallback"
+	},
+	{
+		"inputs": [],
+		"name": "commissionRate",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "newComission",
+				"type": "uint256"
+			}
+		],
+		"name": "editComission",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "amountIn",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "reserveIn",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "reserveOut",
+				"type": "uint256"
+			}
+		],
+		"name": "getAmountOut",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "amountOut",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "pure",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "owner",
+		"outputs": [
+			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "swapRouter",
+		"outputs": [
+			{
+				"internalType": "contract ISwapRouter",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "_tokenIn",
+				"type": "address"
+			},
+			{
+				"internalType": "address",
+				"name": "_tokenOut",
+				"type": "address"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_amountIn",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_amountOutMin",
+				"type": "uint256"
+			},
+			{
+				"internalType": "address",
+				"name": "_pairWith",
+				"type": "address"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_ethAmountToCoinbase",
+				"type": "uint256"
+			}
+		],
+		"name": "tradeV2",
+		"outputs": [],
+		"stateMutability": "payable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "_tokenIn",
+				"type": "address"
+			},
+			{
+				"internalType": "address",
+				"name": "_tokenOut",
+				"type": "address"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_amountOut",
+				"type": "uint256"
+			},
+			{
+				"internalType": "address",
+				"name": "_pairWith",
+				"type": "address"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_ethAmountToCoinbase",
+				"type": "uint256"
+			}
+		],
+		"name": "tradeV2ExactTokensOut",
+		"outputs": [],
+		"stateMutability": "payable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint24",
+				"name": "fee",
+				"type": "uint24"
+			},
+			{
+				"internalType": "uint24",
+				"name": "fee2",
+				"type": "uint24"
+			},
+			{
+				"internalType": "uint256",
+				"name": "amountIn",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "amountOutMinimum",
+				"type": "uint256"
+			},
+			{
+				"internalType": "address[]",
+				"name": "path",
+				"type": "address[]"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_ethAmountToCoinbase",
+				"type": "uint256"
+			}
+		],
+		"name": "tradeV3",
+		"outputs": [],
+		"stateMutability": "payable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint24",
+				"name": "fee",
+				"type": "uint24"
+			},
+			{
+				"internalType": "uint24",
+				"name": "fee2",
+				"type": "uint24"
+			},
+			{
+				"internalType": "uint256",
+				"name": "amountOut",
+				"type": "uint256"
+			},
+			{
+				"internalType": "address[]",
+				"name": "path",
+				"type": "address[]"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_ethAmountToCoinbase",
+				"type": "uint256"
+			}
+		],
+		"name": "tradeV3ExactTokensOut",
+		"outputs": [],
+		"stateMutability": "payable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "newOwner",
+				"type": "address"
+			}
+		],
+		"name": "transferOwnership",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "uniswapV2Factory",
+		"outputs": [
+			{
+				"internalType": "contract IUniswapV2Factory",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "uniswapV2Router",
+		"outputs": [
+			{
+				"internalType": "contract IUniswapV2Router02",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "weth",
+		"outputs": [
+			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "withdrawETH",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "_token",
+				"type": "address"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_amount",
+				"type": "uint256"
+			}
+		],
+		"name": "withdrawToken",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"stateMutability": "payable",
+		"type": "receive"
+	}
+]
